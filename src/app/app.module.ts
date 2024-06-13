@@ -13,6 +13,9 @@ import { LoginComponent } from './login/login.component';
 import { RegComponent } from './reg/reg.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import {HttpClientModule}  from '@angular/common/http'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import {HttpClientModule}  from '@angular/common/http'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
