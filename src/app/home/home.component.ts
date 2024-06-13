@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../sevice/api.service';
 import { OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   products: any = []
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService,private toastr:ToastrService) { }
 
   ngOnInit(): void {
 
@@ -26,6 +27,23 @@ export class HomeComponent implements OnInit {
    
 }
 
+addWish(product:any){
+  if(sessionStorage.getItem('token')){
+    const {id,title,description,category,price,image,rating}=product
+    this.api.addWishlist({id,title,description,category,price,image,rating}).subscribe({
+      next:(res:any)=>{
+        this.toastr.success("Product Added To Wishlist!!")
+      },
+      error:(err:any)=>{
+        console.log(err);
+        this.toastr.error(err.error)
+      }
+    })
+  }
+  else{
+    this.toastr.warning("Please Login First!!")
+  }
+}
 
 
 }
