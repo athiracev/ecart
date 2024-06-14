@@ -45,4 +45,10 @@ export class ApiService {
   getWishlist(){
     return this.http.get(`${this.base_url}/getwishlist`,this.appendTokenToHeader())
   }
+
+  removeWish(id:any){
+    return this.http.delete(`${this.base_url}/deletewishlist/${id}`,this.appendTokenToHeader())
+  }
 }
+
+
