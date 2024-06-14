@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit{
   ngOnInit(): void {
     if(sessionStorage.getItem('token')){
       this.loginStatus=true
-      const userData= sessionStorage.getItem('userData') || ''
+      const userData= sessionStorage.getItem('user-details') || ''
       this.user= JSON.parse(userData).username
     }
     else{

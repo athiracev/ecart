@@ -49,6 +49,22 @@ export class ApiService {
   removeWish(id:any){
     return this.http.delete(`${this.base_url}/deletewishlist/${id}`,this.appendTokenToHeader())
   }
+
+  addCart(data:any){
+    return this.http.post(`${this.base_url}/addcart`,data,this.appendTokenToHeader())
+
+  }
+
+  getCart(){
+    return this.http.get(`${this.base_url}/getcart`,this.appendTokenToHeader())
+  }
+
+  removeCart(id:any){
+    return this.http.delete(`${this.base_url}/removecart/${id}`,this.appendTokenToHeader())
+  }
+
 }
+
+
 
 

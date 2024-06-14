@@ -1,1 +1,39 @@
-<p>cart works!</p>
+<div class="p-5 container">
+    <div class="col-md-9">
+        <h3>Cart Summery</h3>
+        <table class="table table-border">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of cartItems">
+                    <td>{{i.id}}</td>
+                    <td>{{i.title}}</td>
+                    <td>{{i.price}}</td>
+                    <td>
+                        <img src="{{i.image}}" height="200px" alt="certimage">
+                    </td>
+                    <td>
+                        <button class="btn">+</button>
+                        <input type="text" class="form-control" readonly [value]="i.quantity">
+                        <button class="btn">-</button>
+                    </td>
+                    <td>{{i.totalPrice}}</td>
+                    <td>
+                        <button class="btn" (click)="deleteCartItem(i._id)">
+                            <i class="fa-solid fa-trash" style="color: #ed0c0c;"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
